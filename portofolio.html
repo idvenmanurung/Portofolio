@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portofolio Idvend Manurung</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+    body {
+      background: #f0f4f8;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #3178c6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Container */
+    .container {
+      max-width: 960px;
+      margin: 2rem auto 4rem auto;
+      background: white;
+      padding: 2rem 3rem 3rem 3rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 12px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      border-bottom: 3px solid #3178c6;
+      padding-bottom: 1.5rem;
+    }
+    /* Foto bulat */
+    .profile-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid #3178c6;
+      object-fit: cover;
+      margin: 0 auto 1rem auto;
+      box-shadow: 0 0 15px rgba(49, 120, 198, 0.4);
+      transition: transform 0.3s ease;
+    }
+    .profile-photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(49, 120, 198, 0.7);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.3rem;
+      color: #3178c6;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+    header p.subtitle {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    header p a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #3178c6;
+      border: 2px solid #3178c6;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+      display: inline-block;
+    }
+    header p a:hover {
+      background-color: #3178c6;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 1.3rem;
+      border: 2px solid #3178c6;
+      border-radius: 25px;
+      display: inline-block;
+      transition: background-color 0.3s, color 0.3s;
+      color: #3178c6;
+    }
+    nav a:hover {
+      background-color: #3178c6;
+      color: white;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+    section h2 {
+      border-left: 6px solid #3178c6;
+      padding-left: 0.8rem;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: #3178c6;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* About */
+    #about p {
+      white-space: pre-line;
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    /* Experience & Education */
+    .edu-item, .exp-item {
+      margin-bottom: 1.8rem;
+      background: #eef6fc;
+      padding: 1.3rem 1.6rem;
+      border-radius: 8px;
+      box-shadow: inset 0 0 7px #d0e6fb;
+    }
+    .edu-item h3, .exp-item h3 {
+      color: #1a4d8f;
+      margin-bottom: 0.4rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .edu-item span, .exp-item span {
+      font-style: italic;
+      color: #555;
+      font-size: 0.95rem;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    .edu-item p, .exp-item p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    /* Projects Grid */
+    #projects .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 2rem;
+    }
+    .project-item {
+      background: #eef6fc;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(49,120,198,0.15);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .project-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(49,120,198,0.3);
+    }
+    .project-image {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-bottom: 4px solid #3178c6;
+      transition: opacity 0.3s ease;
+    }
+    .project-content {
+      padding: 1rem 1.2rem 1.6rem 1.2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #3178c6;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.03em;
+    }
+    .project-desc {
+      font-size: 0.95rem;
+      color: #444;
+      flex-grow: 1;
+      line-height: 1.4;
+    }
+    .project-link {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #3178c6;
+      align-self: flex-start;
+      text-decoration: underline;
+    }
+    .project-link:hover {
+      color: #1a4d8f;
+    }
+
+    /* Skills */
+    .skills-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem 4rem;
+      margin-top: 1rem;
+    }
+    .skills-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .skills-list li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.3rem;
+      font-size: 1rem;
+      color: #444;
+    }
+    .skills-list li::before {
+      content: '✓';
+      color: #3178c6;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    /* Contact */
+    #contact p {
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #3178c6;
+    }
+    #contact a {
+      font-weight: normal;
+      color: #444;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.2rem 1.5rem 2.5rem 1.5rem;
+      }
+      nav a {
+        margin: 0.4rem 0.6rem;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+      }
+      .skills-group {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <img src="idven.jpg" alt="Foto Idvend Manurung" class="profile-photo" />
+      <h1>Idvend Manurung</h1>
+      <p class="subtitle">D3 Computer Technology</p>
+      <p><a href="https://www.linkedin.com/in/idven-manurung-0ab6922b1/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></p>
+    </header>
+
+    <nav>
+      <a href="#about">About me</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+      <h2>About me</h2>
+      <p>
+        Hi! I’m Idvend Manurung, a passionate Computer Technology student at Institut Teknologi Del, currently focusing on my journey to become a DevOps Engineer.
+
+I’m deeply interested in the world of Linux systems, cloud infrastructure, automation, and DevOps culture. During my academic years, I’ve gained hands-on experience with tools like Docker, Git, and CI/CD pipelines, and have explored cloud and container orchestration concepts such as Terraform and Kubernetes.
+
+I enjoy learning how systems work behind the scenes — from provisioning servers to deploying scalable applications. I'm actively building projects, joining tech trainings, and experimenting with new tools to sharpen my skills.
+
+As a student, I believe in learning by doing. I’m always open to new collaborations, challenges, and opportunities to grow as a future DevOps professional.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>My Projects</h2>
+      <div class="projects-grid">
+        <div class="project-item">
+          <img src="web.png" alt="Proyek Website" class="project-image" />
+          <div class="project-content">
+            <h3 class="project-title">Village Web First Project at IT Del</h3>
+            <p class="project-desc">This is my first personal website project where I built a simple yet modern and responsive website for my hometown village, Desa Kampung Saya. The website was created using only HTML and CSS, focusing on clean layout and mobile-friendly design.</p>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <img src="enose.png" alt="Proyek e-Nose" class="project-image" />
+          <div class="project-content">
+            <h3 class="project-title">e-Nose Dashboard</h3>
+            <p class="project-desc">Creating an eNose (Electronic Nose) Dashboard to visualize data from MQ series gas sensors (MQ135, MQ2, MQ3, MQ4) in real-time using graphs and tables.This dashboard is built with React JS and Recharts, designed to monitor air quality or detect specific aromas/particles through a combination of sensors.
+                Features:
+                Real-time line charts
+                Historical data tables
+                Compatible with input from Raspberry Pi</p>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <img src="nginx.png" alt="Proyek Cloud" class="project-image" />
+          <div class="project-content">
+            <h3 class="project-title">Custom Static Landing Page Design for Local Nginx Server</h3>
+            <p class="project-desc">This static web page is a customized version of the default Nginx landing page, redesigned to provide a more modern and appealing look. Created as a landing page on a local server (192.168.56.118) using HTML and CSS with a purple gradient theme. This project was part of an experiment to set up the Nginx environment to host the frontend dashboard of the system.</p>.</p>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <img src="ansible.png" alt="Proyek Ansible" class="project-image" />
+          <div class="project-content">
+            <h3 class="project-title">Configuring HAProxy 2.4 for Load Balancing and Real-Time Monitoring.</h3>
+            <p class="project-desc">Prepared and configured HAProxy (High Availability Proxy) version 2.4 to handle load balancing across multiple backend services. This setup includes a real-time statistics dashboard displaying server status, traffic, session rates, and backend performance. The configuration was implemented as part of the E-Nose system development project to ensure stability and efficient load distribution among services such as the frontend web server, API backend, and static file server.</p>
+          </div>
+        </div>
+
+        <div class="project-item">
+            <img src="rfid.jpg" alt="Proyek Ansible" class="project-image" />
+            <div class="project-content">
+              <h3 class="project-title">Smart Lock Door Using RFID.</h3>
+              <p class="project-desc">This RFID-based smart lock system is built using an Arduino, an RFID reader, a servo motor, and an LCD module. When a registered RFID card is scanned, the Arduino verifies the card's ID, displays an "Access Granted" message on the LCD, and activates the servo motor to unlock the door. If the card is not recognized, the LCD shows "Access Denied" and the door remains locked.</p>
+            </div>
+          </div>
+
+          <div class="project-item">
+            <img src="tabungenose.jpg" alt="Proyek Ansible" class="project-image" />
+            <div class="project-content">
+              <h3 class="project-title">Enose Project Using Raspberry PI.</h3>
+              <p class="project-desc">This eNose (electronic nose) project uses a Raspberry Pi connected to multiple gas sensors (such as MQ2, MQ3, MQ4, and MQ135) to detect and classify different gas patterns. The sensor data is collected in real time, processed using Python scripts, and visualized through a web-based dashboard built with React and Recharts. A machine learning model is trained to recognize specific odors based on the sensor data, enabling applications like food freshness detection or air quality monitoring. This project demonstrates the integration of hardware, data processing, and AI in an IoT-based environmental sensing system.</p>
+            </div>
+          
+        </div>
+          <div class="project-item">
+            <img src="batak.jpg" alt="Proyek Ansible" class="project-image" />
+            <div class="project-content">
+              <h3 class="project-title">Website Batak Culture.</h3>
+              <p class="project-desc">This Batak Culture website is developed using XAMPP as the local server environment, MySQL for managing the database of cultural information, and HTML for structuring the web pages; it also features an interactive voice narration to provide users with an engaging and immersive learning experience about Batak traditions and heritage.</p>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <section id="skills">
+        <section id="skills" style="text-align: center; padding: 20px;">
+            <h2>Skills</h2>
+            
+            <div class="skills-container" style="display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;">
+          
+              <!-- Soft Skills -->
+              <div class="skill-box" style="max-width: 300px;">
+                <h3>Soft Skills</h3>
+                <div class="skill-items" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 15px;">
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/communication.png" alt="Communication"/>
+                    <span>Communication</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/conference-call.png" alt="Teamwork"/>
+                    <span>Teamwork</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/puzzle.png" alt="Problem Solving"/>
+                    <span>Problem Solving</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/clock.png" alt="Time Management"/>
+                    <span>Time Management</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/change.png" alt="Adaptability"/>
+                    <span>Adaptability</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/critical-thinking.png" alt="Critical Thinking"/>
+                    <span>Critical Thinking</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/leadership.png" alt="Leadership"/>
+                    <span>Leadership</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/creativity.png" alt="Creativity"/>
+                    <span>Creativity</span>
+                  </div>
+                </div>
+              </div>
+          
+              <!-- Hard Skills -->
+              <div class="skill-box" style="max-width: 300px;">
+                <h3>Hard Skills</h3>
+                <div class="skill-items" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 15px;">
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/linux.png" alt="Linux"/>
+                    <span>Linux</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/console.png" alt="Bash Scripting"/>
+                    <span>Bash Scripting</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="24" height="24"/>
+                    <span>Python Programming</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/git.png" alt="Git"/>
+                    <span>Git</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" width="24" height="24"/>
+                    <span>Docker</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" width="24" height="24"/>
+                    <span>Kubernetes</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/terraform.png" alt="Terraform"/>
+                    <span>Terraform</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/ci-cd.png" alt="CI/CD"/>
+                    <span>CI/CD</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/amazon-web-services.png" alt="AWS"/>
+                    <span>Cloud Computing (AWS)</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/networking.png" alt="Networking Basics"/>
+                    <span>Networking Basics</span>
+                  </div>
+                </div>
+              </div>
+          
+              <!-- Software Skills -->
+              <div class="skill-box" style="max-width: 300px;">
+                <h3>Software Skills</h3>
+                <div class="skill-items" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 15px;">
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/html-5.png" alt="HTML"/>
+                    <span>HTML</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/css3.png" alt="CSS3"/>
+                    <span>CSS3</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/javascript.png" alt="JavaScript"/>
+                    <span>JavaScript</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="24" height="24"/>
+                    <span>React</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width="24" height="24"/>
+                    <span>Node.js</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" width="24" height="24"/>
+                    <span>Docker</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" width="24" height="24"/>
+                    <span>Kubernetes</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/amazon-web-services.png" alt="AWS"/>
+                    <span>AWS</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/python.png" alt="Python"/>
+                    <span>Python</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/c-programming.png" alt="C Programming"/>
+                    <span>C Programming</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/ansible.png" alt="Ansible"/>
+                    <span>Ansible</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/mysql-logo.png" alt="MySQL"/>
+                    <span>MySQL</span>
+                  </div>
+                  <div class="skill" style="display: flex; align-items: center; gap: 6px;">
+                    <img src="https://img.icons8.com/color/24/000000/mongodb.png" alt="MongoDB"/>
+                    <span>MongoDB</span>
+                  </div>
+                </div>
+              </div>
+          
+            </div>
+          </section>
+          
+       
+          <section id="contact" style="padding: 20px; max-width: 600px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 2rem; margin-bottom: 15px;">Contact</h2>
+            
+            <p style="font-size: 1.1rem; margin: 8px 0;">
+              Email: 
+              <a href="mailto:jrmanurung2@gmail.com" style="color: #1a73e8; text-decoration: none;" 
+                 title="Send an email to jrmanurung2@gmail.com">
+                jrmanurung2@gmail.com
+              </a>
+            </p>
+            
+            <p style="font-size: 1.1rem; margin: 8px 0;">
+              Phone: 
+              <a href="tel:+6282165723774" style="color: #1a73e8; text-decoration: none;" 
+                 title="Call 0821-6572-3774">
+                0821-6572-3774
+              </a>
+            </p>
+            
+            <p style="font-size: 1.1rem; margin: 8px 0;">
+              LinkedIn: 
+              <a href="https://www.linkedin.com/in/idven-manurung-0ab6922b1/" target="_blank" rel="noopener noreferrer" 
+                 style="color: #1a73e8; text-decoration: none;" 
+                 title="Idven Manurung LinkedIn Profile">
+                idven-manurung-0ab6922b1
+              </a>
+            </p>
+            
+            <div style="margin-top: 25px;">
+              <!-- Optional: add social media icons -->
+              <a href="mailto:jrmanurung2@gmail.com" style="margin: 0 10px;" title="Email">
+                <img src="https://img.icons8.com/color/32/000000/email-open--v1.png" alt="Email Icon" />
+              </a>
+              <a href="tel:+6282165723774" style="margin: 0 10px;" title="Phone">
+                <img src="https://img.icons8.com/color/32/000000/phone.png" alt="Phone Icon" />
+              </a>
+              <a href="https://www.linkedin.com/in/idven-manurung-0ab6922b1/" target="_blank" rel="noopener noreferrer" style="margin: 0 10px;" title="LinkedIn">
+                <img src="https://img.icons8.com/color/32/000000/linkedin.png" alt="LinkedIn Icon" />
+              </a>
+            </div>
+          </section>
+          
